@@ -17,7 +17,7 @@
  * 
  * --- ADDITIONAL SYNTAX NOTES ---
  * 
- * - everything after # is considered a comment and ignored
+ * - everything after a # is considered a comment and ignored
  * - empty lines as well as leading and trailing whitespace is ignored
  * - whitespace between tokens is ignored as well
  * 
@@ -34,17 +34,43 @@ extern "C" {
 
 #include <stdio.h>
 
-//Types
-typedef struct AstNode {
-	struct AstNode* child;
-	struct AstNode* sibling;
+/**
+ * The node type that makes up the abstract syntax trees (AST) produced by the 
+ * SDF-parser.
+ */
+typedef struct SdfNode {
+	struct SdfNode* child;
+	struct SdfNode* sibling;
 	char* value;
-} AstNode;
+} SdfNode;
 
-//Function declarations
-AstNode* parseFile(const char* filename);
-void freeTree(AstNode* root);
-void drawTree(FILE* dest, AstNode* root);
+/**
+ * Parses the file with the given filename as SDF and returns the abstract 
+ * syntax tree (AST). Returns NULL if errors are encountered.
+ * The AST needs to be freed by calling sdf_free_tree with the node returned by 
+ * this function as argument.
+ * 
+ * @param filename the name of the file to parse
+ * @return the AST of the given file or NULL if errors are encountered
+ */
+SdfNode* sdf_parse_file(const char* filename);
+
+/**
+ * Frees the (sub)tree of which the given node is the root. Do not pass NULL to
+ * this function.
+ * 
+ * @param root the root node of the tree that must be freed
+ */
+void sdf_free_tree(SdfNode* root);
+
+/**
+ * Pretty prints the (sub)tree of which the given node is the root to the given 
+ * file handle. Note that stdout is a valid value for dest.
+ * 
+ * @param dest the file or stream to which the AST must be printed
+ * @param root the root node of the tree that must be printed.
+ */
+void sdf_draw_tree(FILE* dest, SdfNode* root);
 
 #ifdef	__cplusplus
 }

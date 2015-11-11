@@ -1,11 +1,23 @@
 #include "SdfParser.h"
 
 #include <stdlib.h>
+#include <string.h>
 
-// Helpers
+////////////////////////////////////////////////////////////////////////////////
+// Type declarations                                                          //
+////////////////////////////////////////////////////////////////////////////////
 
-AstNode* newNode() {
-	AstNode* node = malloc(sizeof(AstNode));
+typedef struct Document {
+	FILE* file;
+	const char* filename;
+} Document;
+
+////////////////////////////////////////////////////////////////////////////////
+// Helper functions                                                           //
+////////////////////////////////////////////////////////////////////////////////
+
+SdfNode* new_node() {
+	SdfNode* node = malloc(sizeof(SdfNode));
 	node->child=NULL;
 	node->sibling=NULL;
 	node->value=NULL;
@@ -17,48 +29,22 @@ void* error(const char* msg) {
 	return NULL;
 }
 
-// Declarations
-AstNode* parseDocument();
+////////////////////////////////////////////////////////////////////////////////
+// Parsing functions                                                          //
+////////////////////////////////////////////////////////////////////////////////
 
-// Parser implementations
-
-AstNode* parseFile(const char* filename) {
-	//Open the file with material definitions
-	FILE * file = fopen(filename, "r");
-
-	//Check to see if we actually opened the file OK
-	if (file == NULL) {
-		return error("Unable to open Components file");
-	}
-	
-	//Build the AST
-	AstNode* root = parseDocument(file);
-	if (root == NULL) {
-		return error("Parsing failed");
-	}
-
-	return root;
-}
-
-void freeTree(AstNode* root) {
-	if(root->child != NULL) {
-		freeTree(root->child);
-	}
-	if(root->sibling != NULL) {
-		freeTree(root->sibling);
-	}
-	free(root->value);
-	free(root);
-}
-
-AstNode* parseDocument() {
-	AstNode* node = newNode();
+SdfNode* parse_document(Document* this) {
+	SdfNode* node = new_node();
+	node->value = malloc(sizeof(char)*(strlen(this->filename)+1));
+	strcpy(node->value, this->filename);
 	return node;
 }
 
-// AST Drawing functions
+////////////////////////////////////////////////////////////////////////////////
+// Output functions                                                           //
+////////////////////////////////////////////////////////////////////////////////
 
-void drawSubTree(FILE* dest, AstNode* node, int indent) {
+void draw_subtree(FILE* dest, SdfNode* node, int indent) {
 	int i;
 	for(i = 0; i < indent; i++) {
 		fprintf(dest, "  ");
@@ -69,13 +55,50 @@ void drawSubTree(FILE* dest, AstNode* node, int indent) {
 		fprintf(dest, "NULL\n");
 	}
 	if (node->child != NULL) {
-		drawSubTree(dest, node->child, indent+1);
+		draw_subtree(dest, node->child, indent+1);
 	}
 	if (node->sibling != NULL) {
-		drawSubTree(dest, node->sibling, indent);
+		draw_subtree(dest, node->sibling, indent);
 	}
 }
 
-void drawTree(FILE* dest, AstNode* root) {
-	drawSubTree(dest, root, 0);
+////////////////////////////////////////////////////////////////////////////////
+// Public functions                                                           //
+////////////////////////////////////////////////////////////////////////////////
+
+SdfNode* sdf_parse_file(const char* filename) {
+	// Open the file
+	FILE * file = fopen(filename, "r");
+
+	// Check to see if we actually opened the file OK
+	if (file == NULL) {
+		return error("Unable to open Components file");
+	}
+	
+	// Prepare the parser status object
+	Document obj;
+	obj.filename = filename;
+	
+	// Build the AST
+	SdfNode* root = parse_document(&obj);
+	if (root == NULL) {
+		return error("Parsing failed");
+	}
+
+	return root;
+}
+
+void sdf_free_tree(SdfNode* root) {
+	if(root->child != NULL) {
+		sdf_free_tree(root->child);
+	}
+	if(root->sibling != NULL) {
+		sdf_free_tree(root->sibling);
+	}
+	free(root->value);
+	free(root);
+}
+
+void sdf_draw_tree(FILE* dest, SdfNode* root) {
+	draw_subtree(dest, root, 0);
 }
