@@ -4,7 +4,7 @@
  * --- CONTEXT FREE GRAMMAR ---
  * 
  * document      -> element* EOF
- * element       -> LABEL LBRACE NEWLINE item* RBRACE NEWLINE
+ * element       -> LABEL structValue NEWLINE
  * item          -> LABEL ( singleValue | structValue ) NEWLINE
  * singleValue   -> COLON ( quotedString | LABEL )
  * structValue   -> LBRACE NEWLINE item* RBRACE
@@ -42,6 +42,7 @@ typedef struct SdfNode {
 	struct SdfNode* child;
 	struct SdfNode* sibling;
 	char* value;
+	int value_length;
 } SdfNode;
 
 /**

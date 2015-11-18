@@ -1,0 +1,2621 @@
+#test
+
+
+
+reticle {
+    UID:			1
+    GraphicFile:	reticle
+    RedLight:		255
+    GreenLight:		255
+    BlueLight:   	255
+    ComponentType:	debug
+    Groups:			debug
+	Navigable:		1
+}
+block {
+    UID:         2
+    GraphicFile:         block
+    ComponentType:       plating
+    Groups:              Plating
+}
+reticle2 {
+    UID:         3
+    GraphicFile:         reticle2
+    RedLight:    255
+    GreenLight:  255
+    BlueLight:   255
+    ComponentType:       debug
+    AssociatedComponent: -2
+    Groups:              debug
+	Navigable:	1
+}
+reticle3 {
+    UID:         4
+    GraphicFile:         reticle3
+    RedLight:    255
+    GreenLight:  255
+    BlueLight:   255
+    ComponentType:       debug
+    AssociatedComponent: -3
+    Groups:              debug
+	Navigable:	1
+}
+teleport1 {
+    UID:         6
+    GraphicFile:         teleport1
+    ComponentType:       debug
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+	Navigable:	1
+}
+teleport2 {
+    UID:         7
+    GraphicFile:         teleport2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+	Navigable:	1
+}
+teleport3 {
+    UID:         8
+    GraphicFile:         teleport3
+    ComponentType:       animation
+    AssociatedComponent: -2
+    Animated:            -2
+    AnimationFrames:     17
+    Groups:              debug
+	Navigable:	1
+}
+worklight {
+    UID:         9
+    RedLight:    120
+    GreenLight:  120
+    BlueLight:   120
+    GraphicFile:         worklight
+    ComponentType:       light
+    Groups:              Light
+	Navigable:	1
+}
+blocklighton {
+    UID:         10
+    Electricity: 3
+    Heat:        3
+    BaseCost:    3
+    RedLight:    200
+    GreenLight:  200
+    BlueLight:   255
+    GraphicFile:         blocklighton
+    ComponentType:       light
+    Groups:              Light
+}
+blocklightoff {
+    UID:         11
+    GraphicFile:         blocklightoff
+    ComponentType:       light
+    AssociatedComponent: -1
+    Groups:              Light
+}
+blocklightred {
+    UID:         12
+    RedLight:    255
+    GraphicFile:         blocklightred
+    ComponentType:       light
+    AssociatedComponent: -2
+    Groups:              Light
+}
+blocklighton {
+    UID:         13
+    GreenLight:  255
+    GraphicFile:         blocklighton
+    ComponentType:       light
+    AssociatedComponent: -3
+    Groups:              Light
+}
+blocklighton {
+    UID:         14
+    BlueLight:   255
+    GraphicFile:         blocklighton
+    ComponentType:       light
+    AssociatedComponent: -4
+    Groups:              Light
+}
+extlight {
+    UID:         15
+    RedLight:    155
+    GreenLight:  150
+    BlueLight:   150
+    GraphicFile:         extlight
+    ComponentType:       light
+    Groups:              Light|Common
+	Navigable:	1
+}
+extlight {
+    UID:         16
+    GraphicFile:         extlight
+    ComponentType:       light
+    AssociatedComponent: -1
+    Groups:              Light|Common
+	Navigable:	1
+}
+extlight {
+    UID:         17
+    RedLight:    155
+    GraphicFile:         extlight
+    ComponentType:       light
+    AssociatedComponent: -2
+    Groups:              Light|Common
+	Navigable:	1
+}
+extlight {
+    UID:         18
+    GreenLight:  150
+    GraphicFile:         extlight
+    ComponentType:       light
+    AssociatedComponent: -3
+    Groups:              Light|Common
+	Navigable:	1
+}
+extlight {
+    UID:         19
+    BlueLight:   150
+    GraphicFile:         extlight
+    ComponentType:       light
+    AssociatedComponent: -4
+    Groups:              Light|Common
+	Navigable:	1
+}
+wire1 {
+    UID:         20
+    GraphicFile:         wire1
+    ComponentType:       wiring
+    Groups:              Networks|Common
+}
+wire2 {
+    UID:         21
+    GraphicFile:         wire2
+    ComponentType:       wiring
+    AssociatedComponent: -1
+    Groups:              Networks
+}
+wire3 {
+    UID:         22
+    GraphicFile:         wire3
+    ComponentType:       wiring
+    AssociatedComponent: -2
+    Groups:              Networks
+}
+wirecon {
+    UID:         23
+    GraphicFile:         wirecon
+    ComponentType:       wiring
+    AssociatedComponent: -3
+    Groups:              Networks
+}
+wireblock {
+    UID:         24
+    GraphicFile:         wireblock
+    ComponentType:       wiring
+    AssociatedComponent: -4
+    Groups:              Networks
+}
+bedhead {
+    UID:         30
+    GraphicFile:         bedhead
+    ComponentType:       morale
+    Groups:              Furniture
+}
+bedfoot {
+    UID:         31
+    GraphicFile:         bedfoot
+    ComponentType:       portion
+    AssociatedComponent: -1
+    Groups:              Furniture
+}
+storagelock {
+    UID:         32
+    GraphicFile:         storagelock
+    ComponentType:       morale
+    Groups:              Furniture
+}
+table {
+    UID:         33
+    GraphicFile:         table
+    ComponentType:       table
+    Groups:              Furniture
+}
+pipe1 {
+    UID:         40
+    GraphicFile:         pipe1
+    ComponentType:       pipe
+    Groups:              Networks
+}
+pipe2 {
+    UID:         41
+    GraphicFile:         pipe2
+    ComponentType:       pipe
+    AssociatedComponent: -1
+    Groups:              Networks
+}
+pipecap {
+    UID:         42
+    GraphicFile:         pipecap
+    ComponentType:       pipe
+    AssociatedComponent: -2
+    Groups:              Networks
+}
+pipecon {
+    UID:         43
+    GraphicFile:         pipecon
+    ComponentType:       pipe
+    AssociatedComponent: -3
+    Groups:              Networks
+}
+pump {
+    UID:         44
+    GraphicFile:         pump
+    ComponentType:       pump
+    Groups:              Networks
+}
+pipeblock {
+    UID:         45
+    GraphicFile:         pipeblock
+    ComponentType:       pipe
+    AssociatedComponent: -5
+    Groups:              Networks
+}
+pipeelbow1 {
+    UID:         46
+    GraphicFile:         pipeelbow1
+    ComponentType:       pipe
+    AssociatedComponent: -6
+    Groups:              Networks
+}
+aircooler {
+    UID:         50
+    GraphicFile:         aircooler
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+oxygenation {
+    UID:         51
+    GraphicFile:         oxygenation
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+co2scrub {
+    UID:         52
+    GraphicFile:         co2scrub
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+co2collector {
+    UID:         53
+    GraphicFile:         co2collector
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+suitrefill {
+    UID:         54
+    GraphicFile:         suitrefill
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+suitrefill2 {
+    UID:         55
+    GraphicFile:         suitrefill2
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              LifeSupport
+}
+termeng {
+    UID:         60
+    GraphicFile:         termeng
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termeng2 {
+    UID:         760
+    GraphicFile:         termeng2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termcapt {
+    UID:         61
+    GraphicFile:         termcapt
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termcapt2 {
+    UID:         761
+    GraphicFile:         termcapt2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termmat {
+    UID:         62
+    GraphicFile:         termmat
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termmat2 {
+    UID:         762
+    GraphicFile:         termmat2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termweap {
+    UID:         63
+    GraphicFile:         termweap
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termweap2 {
+    UID:         763
+    GraphicFile:         termweap2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termsens {
+    UID:         64
+    GraphicFile:         termsens
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termsens2 {
+    UID:         764
+    GraphicFile:         termsens2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termfighter {
+    UID:         65
+    GraphicFile:         termfighter
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termfighter2 {
+    UID:         765
+    GraphicFile:         termfighter2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termtorpedo {
+    UID:         66
+    GraphicFile:         termtorpedo
+    ComponentType:       terminal
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+termtorpedo2 {
+    UID:         766
+    GraphicFile:         termtorpedo2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Terminals
+}
+solar {
+    UID:         70
+    GraphicFile:         solar
+    ComponentType:       powerplant
+    Groups:              Power
+}
+dieselsmall {
+    UID:         71
+    GraphicFile:         dieselsmall
+    ComponentType:       powerplant
+    Groups:              Power
+}
+solarflat {
+    UID:         72
+    GraphicFile:         solarflat
+    ComponentType:       powerplant
+    Groups:              Power
+}
+airlock1 {
+    UID:         80
+    GraphicFile:         airlock1
+    ComponentType:       airlock
+    Groups:              Doors|Common
+}
+airlock2 {
+    UID:         81
+    GraphicFile:         airlock2
+    ComponentType:       debug
+    Groups:              Doors
+}
+airlock5 {
+    UID:         781
+    GraphicFile:         airlock5
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Doors
+}
+airlock4 {
+    UID:         782
+    GraphicFile:         airlock4
+    ComponentType:       singleanim
+    AssociatedComponent: -3
+    Groups:              Doors
+}
+airlock3 {
+    UID:         783
+    GraphicFile:         airlock3
+    ComponentType:       singleanim
+    AssociatedComponent: -2
+    Groups:              Doors
+}
+airlock3 {
+    UID:         784
+    GraphicFile:         airlock3
+    ComponentType:       singleanim
+    AssociatedComponent: -2
+    Groups:              Doors
+}
+airlock4 {
+    UID:         785
+    GraphicFile:         airlock4
+    ComponentType:       singleanim
+    AssociatedComponent: -2
+    Groups:              Doors
+}
+airlock5 {
+    UID:         786
+    GraphicFile:         airlock5
+    ComponentType:       singleanim
+    AssociatedComponent: -2
+    Groups:              Doors
+}
+dooropen {
+    UID:         83
+    GraphicFile:         dooropen
+    ComponentType:       door
+    Groups:              Doors
+	Navigable:	1
+}
+doorclosed {
+    UID:         84
+    GraphicFile:         doorclosed
+    ComponentType:       door
+    AssociatedComponent: -1
+    Groups:              Doors
+}
+blastdooropen {
+    UID:         85
+    GraphicFile:         blastdooropen
+    ComponentType:       door
+    Groups:              Doors
+	Navigable:	1
+}
+blastdoorclosed {
+    UID:         86
+    GraphicFile:         blastdoorclosed
+    ComponentType:       door
+    AssociatedComponent: -1
+    Groups:              Doors
+}
+blastdoormid {
+    UID:         87
+    GraphicFile:         blastdoormid
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Doors
+	Navigable:	1
+}
+rocketoff {
+    UID:         90
+    GraphicFile:         rocketoff
+    ComponentType:       rocket
+    Groups:              Propulsion
+	Thrust:				150
+}
+rocketon {
+    UID:         91
+    GraphicFile:         rocketon
+    ComponentType:       rocket
+    AssociatedComponent: -1
+    Groups:              Propulsion
+	Thrust:				150
+}
+srocketoff {
+    UID:         92
+    GraphicFile:         srocketoff
+    ComponentType:       rocket
+    Groups:              Propulsion
+	Thrust:				80
+}
+srocketon {
+    UID:         93
+    GraphicFile:         srocketon
+    ComponentType:       rocket
+    AssociatedComponent: -1
+    Groups:              Propulsion
+	Thrust:				80
+}
+sail {
+    UID:         94
+    GraphicFile:         sail
+    ComponentType:       rocket
+    Groups:              Propulsion
+}
+bone {
+    UID:         310
+    GraphicFile:         bone
+    ComponentType:       bone
+    Groups:              Organics
+}
+boneendround {
+    UID:         311
+    GraphicFile:         boneendround
+    ComponentType:       bone
+    AssociatedComponent: -1
+    Groups:              Organics
+}
+boneendpointy {
+    UID:         312
+    GraphicFile:         boneendpointy
+    ComponentType:       bone
+    AssociatedComponent: -2
+    Groups:              Organics
+}
+boneverti {
+    UID:         313
+    GraphicFile:         boneverti
+    ComponentType:       bone
+    AssociatedComponent: -3
+    Groups:              Organics
+}
+flesh1 {
+    UID:         320
+    GraphicFile:         flesh1
+    ComponentType:       flesh
+    Groups:              Organics
+}
+flesh2 {
+    UID:         321
+    GraphicFile:         flesh2
+    ComponentType:       flesh
+    AssociatedComponent: -1
+    Groups:              Organics
+}
+flesh3 {
+    UID:         322
+    GraphicFile:         flesh3
+    ComponentType:       flesh
+    AssociatedComponent: -2
+    Groups:              Organics
+}
+carapace {
+    UID:         330
+    GraphicFile:         carapace
+    ComponentType:       carapace
+    Groups:              Organics
+}
+carapace2side {
+    UID:         331
+    GraphicFile:         carapace2side
+    ComponentType:       debug
+    Groups:              Organics
+}
+carapace3side {
+    UID:         332
+    GraphicFile:         carapace3side
+    ComponentType:       debug
+    Groups:              Organics
+}
+artery {
+    UID:         340
+    GraphicFile:         artery
+    ComponentType:       artery
+    Groups:              Organics
+}
+arterybroken1 {
+    UID:         341
+    GraphicFile:         arterybroken1
+    ComponentType:       artery
+    AssociatedComponent: -2
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+arterybroken2 {
+    UID:         342
+    GraphicFile:         arterybroken2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+arterybroken3 {
+    UID:         343
+    GraphicFile:         arterybroken3
+    ComponentType:       animation
+    AssociatedComponent: -2
+    Animated:            -2
+    AnimationFrames:     17
+    Groups:              Organics
+}
+arterycon {
+    UID:         344
+    GraphicFile:         arterycon
+    ComponentType:       artery
+    AssociatedComponent: -1
+    Groups:              Organics
+}
+heart5 {
+    UID:         350
+    GraphicFile:         heart5
+    ComponentType:       debug
+    Groups:              Organics
+}
+heart1 {
+    UID:         351
+    GraphicFile:         heart1
+    ComponentType:       portion
+    AssociatedComponent: -1
+    Groups:              Organics
+}
+heart7 {
+    UID:         352
+    GraphicFile:         heart7
+    ComponentType:       portion
+    AssociatedComponent: -2
+    Groups:              Organics
+}
+heart8 {
+    UID:         353
+    GraphicFile:         heart8
+    ComponentType:       portion
+    AssociatedComponent: -3
+    Groups:              Organics
+}
+heart6 {
+    UID:         354
+    GraphicFile:         heart6
+    ComponentType:       portion
+    AssociatedComponent: -4
+    Groups:              Organics
+}
+heart2 {
+    UID:         355
+    GraphicFile:         heart2
+    ComponentType:       portion
+    AssociatedComponent: -5
+    Groups:              Organics
+}
+heart3 {
+    UID:         356
+    GraphicFile:         heart3
+    ComponentType:       portion
+    AssociatedComponent: -6
+    Groups:              Organics
+}
+heart4 {
+    UID:         357
+    GraphicFile:         heart4
+    ComponentType:       portion
+    AssociatedComponent: -7
+    Groups:              Organics
+}
+iris1 {
+    UID:         360
+    GraphicFile:         iris1
+    ComponentType:       airlock
+    Groups:              Organics|Doors
+}
+iris2 {
+    UID:         361
+    GraphicFile:         iris2
+    ComponentType:       airlock
+    AssociatedComponent: -1
+    Groups:              Organics|Doors
+}
+odoropen {
+    UID:         362
+    GraphicFile:         odoropen
+    ComponentType:       door
+    Groups:              Organics|Doors
+	Navigable:	1
+}
+odorclosed {
+    UID:         363
+    GraphicFile:         odorclosed
+    ComponentType:       door
+    AssociatedComponent: -1
+    Groups:              Organics|Doors
+}
+lungin1 {
+    UID:         370
+    GraphicFile:         lungin1
+    ComponentType:       debug
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+lungout1 {
+    UID:         371
+    GraphicFile:         lungout1
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+lungin2 {
+    UID:         372
+    GraphicFile:         lungin2
+    ComponentType:       debug
+    AssociatedComponent: -2
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+lungout2 {
+    UID:         373
+    GraphicFile:         lungout2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+lungin3 {
+    UID:         374
+    GraphicFile:         lungin3
+    ComponentType:       debug
+    AssociatedComponent: -4
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+lungout3 {
+    UID:         375
+    GraphicFile:         lungout3
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Organics
+}
+suitlock8 {
+    UID:         100
+    GraphicFile:         suitlock8
+    ComponentType:       suitlock
+    Groups:              Storage
+}
+suitlock7 {
+    UID:         101
+    GraphicFile:         suitlock7
+    ComponentType:       suitlock
+    AssociatedComponent: -1
+    Groups:              Storage
+}
+suitlock6 {
+    UID:         102
+    GraphicFile:         suitlock6
+    ComponentType:       suitlock
+    AssociatedComponent: -2
+    Groups:              Storage
+}
+suitlock5 {
+    UID:         103
+    GraphicFile:         suitlock5
+    ComponentType:       suitlock
+    AssociatedComponent: -3
+    Groups:              Storage
+}
+suitlock4 {
+    UID:         104
+    GraphicFile:         suitlock4
+    ComponentType:       suitlock
+    AssociatedComponent: -4
+    Groups:              Storage
+}
+suitlock3 {
+    UID:         105
+    GraphicFile:         suitlock3
+    ComponentType:       suitlock
+    AssociatedComponent: -5
+    Groups:              Storage
+}
+suitlock2 {
+    UID:         106
+    GraphicFile:         suitlock2
+    ComponentType:       suitlock
+    AssociatedComponent: -6
+    Groups:              Storage
+}
+suitlock1 {
+    UID:         107
+    GraphicFile:         suitlock1
+    ComponentType:       suitlock
+    AssociatedComponent: -7
+    Groups:              Storage
+}
+suitlock0 {
+    UID:         108
+    GraphicFile:         suitlock0
+    ComponentType:       suitlock
+    AssociatedComponent: -8
+    Groups:              Storage
+}
+gunlock8 {
+    UID:         110
+    GraphicFile:         gunlock8
+    ComponentType:       gunlock
+    Groups:              Storage
+}
+gunlock7 {
+    UID:         111
+    GraphicFile:         gunlock7
+    ComponentType:       gunlock
+    AssociatedComponent: -1
+    Groups:              Storage
+}
+gunlock6 {
+    UID:         112
+    GraphicFile:         gunlock6
+    ComponentType:       gunlock
+    AssociatedComponent: -2
+    Groups:              Storage
+}
+gunlock5 {
+    UID:         113
+    GraphicFile:         gunlock5
+    ComponentType:       gunlock
+    AssociatedComponent: -3
+    Groups:              Storage
+}
+gunlock4 {
+    UID:         114
+    GraphicFile:         gunlock4
+    ComponentType:       gunlock
+    AssociatedComponent: -4
+    Groups:              Storage
+}
+gunlock3 {
+    UID:         115
+    GraphicFile:         gunlock3
+    ComponentType:       gunlock
+    AssociatedComponent: -5
+    Groups:              Storage
+}
+gunlock2 {
+    UID:         116
+    GraphicFile:         gunlock2
+    ComponentType:       gunlock
+    AssociatedComponent: -6
+    Groups:              Storage
+}
+gunlock1 {
+    UID:         117
+    GraphicFile:         gunlock1
+    ComponentType:       gunlock
+    AssociatedComponent: -7
+    Groups:              Storage
+}
+gunlock0 {
+    UID:         118
+    GraphicFile:         gunlock0
+    ComponentType:       gunlock
+    AssociatedComponent: -8
+    Groups:              Storage
+}
+smalllocker {
+    UID:         790
+    GraphicFile:         smalllocker
+    ComponentType:       sglock
+    Groups:              Storage
+	Navigable:	1
+}
+smalllocker-nogun {
+    UID:         791
+    GraphicFile:         smalllocker-nogun
+    ComponentType:       sglock
+    AssociatedComponent: -1
+    Groups:              Storage
+	Navigable:	1
+}
+smalllocker-nosuit {
+    UID:         792
+    GraphicFile:         smalllocker-nosuit
+    ComponentType:       sglock
+    AssociatedComponent: -2
+    Groups:              Storage
+	Navigable:	1
+}
+smalllocker-empty {
+    UID:         793
+    GraphicFile:         smalllocker-empty
+    ComponentType:       sglock
+    AssociatedComponent: -3
+    Groups:              Storage
+	Navigable:	1
+}
+chairtempt {
+    UID:         120
+    GraphicFile:         chairtempt
+    ComponentType:       chair
+    Groups:              Furniture
+}
+chairlempt {
+    UID:         121
+    GraphicFile:         chairlempt
+    ComponentType:       portion
+    AssociatedComponent: -1
+    Groups:              Furniture
+}
+crashtop {
+    UID:         122
+    GraphicFile:         crashtop
+    ComponentType:       debug
+    Groups:              Furniture
+}
+crashb {
+    UID:         123
+    GraphicFile:         crashb
+    ComponentType:       portion
+    AssociatedComponent: -1
+    Groups:              Furniture
+}
+crashtopc {
+    UID:         124
+    GraphicFile:         crashtopc
+    ComponentType:       debug
+    Groups:              Furniture
+}
+crashbc {
+    UID:         125
+    GraphicFile:         crashbc
+    ComponentType:       portion
+    AssociatedComponent: -1
+    Groups:              Furniture
+}
+wallchairup {
+    UID:         126
+    GraphicFile:         wallchairup
+    ComponentType:       accel
+    Groups:              Furniture
+}
+wallchairdown {
+    UID:         127
+    GraphicFile:         wallchairdown
+    ComponentType:       accel
+    AssociatedComponent: -1
+    Groups:              Furniture
+}
+wallchairopen {
+    UID:         128
+    GraphicFile:         wallchairopen
+    ComponentType:       accel
+    AssociatedComponent: -2
+    Groups:              Furniture
+}
+wallchairdown {
+    UID:         129
+    GraphicFile:         wallchairdown
+    ComponentType:       accel
+    AssociatedComponent: -3
+    Groups:              Furniture
+}
+batteryla {
+    UID:         130
+    GraphicFile:         batteryla
+    ComponentType:       battery
+    Groups:              Power
+}
+batteryht {
+    UID:         131
+    GraphicFile:         batteryht
+    ComponentType:       battery
+    Groups:              Power
+}
+base {
+    UID:         140
+    GraphicFile:         base
+    ComponentType:       debug
+    Groups:              debug
+}
+activeradar {
+    UID:         141
+    GraphicFile:         activeradar
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+sensordish {
+    UID:         142
+    GraphicFile:         sensordish
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+laser {
+    UID:         143
+    GraphicFile:         laser
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+railgun {
+    UID:         144
+    GraphicFile:         railgun
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+ammocache {
+    UID:         145
+    GraphicFile:         ammocache
+    ComponentType:       debug
+    Groups:              Weapon
+}
+missilechute {
+    UID:         146
+    GraphicFile:         missilechute
+    ComponentType:       debug
+    Groups:              Weapon
+}
+chemicalkinetic {
+    UID:         147
+    GraphicFile:         chemicalkinetic
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+weaklaser {
+    UID:         148
+    GraphicFile:         weaklaser
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+flak {
+    UID:         149
+    GraphicFile:         flak
+    ComponentType:       weapon
+    Groups:              Weapon
+}
+asteroidd1 {
+    UID:         200
+    GraphicFile:         asteroidd1
+    ComponentType:       asteroid
+    Groups:              debug
+}
+asteroidd2 {
+    UID:         201
+    GraphicFile:         asteroidd2
+    ComponentType:       asteroid
+    AssociatedComponent: -1
+    Groups:              debug
+}
+asteroidd3 {
+    UID:         202
+    GraphicFile:         asteroidd3
+    ComponentType:       asteroid
+    AssociatedComponent: -2
+    Groups:              debug
+}
+asteroidd4 {
+    UID:         203
+    GraphicFile:         asteroidd4
+    ComponentType:       asteroid
+    AssociatedComponent: -3
+    Groups:              debug
+}
+asteroidm1 {
+    UID:         204
+    GraphicFile:         asteroidm1
+    ComponentType:       asteroid
+    AssociatedComponent: -4
+    Groups:              debug
+}
+asteroidm2 {
+    UID:         205
+    GraphicFile:         asteroidm2
+    ComponentType:       asteroid
+    AssociatedComponent: -5
+    Groups:              debug
+}
+asteroidm3 {
+    UID:         206
+    GraphicFile:         asteroidm3
+    ComponentType:       asteroid
+    AssociatedComponent: -6
+    Groups:              debug
+}
+asteroidm4 {
+    UID:         207
+    GraphicFile:         asteroidm4
+    ComponentType:       asteroid
+    AssociatedComponent: -7
+    Groups:              debug
+}
+asteroidl1 {
+    UID:         208
+    GraphicFile:         asteroidl1
+    ComponentType:       asteroid
+    AssociatedComponent: -8
+    Groups:              debug
+}
+asteroidl2 {
+    UID:         209
+    GraphicFile:         asteroidl2
+    ComponentType:       asteroid
+    AssociatedComponent: -9
+    Groups:              debug
+}
+asteroidl3 {
+    UID:         210
+    GraphicFile:         asteroidl3
+    ComponentType:       asteroid
+    AssociatedComponent: -10
+    Groups:              debug
+}
+asteroidl4 {
+    UID:         211
+    GraphicFile:         asteroidl4
+    ComponentType:       asteroid
+    AssociatedComponent: -11
+    Groups:              debug
+}
+asteroidf1 {
+    UID:         215
+    GraphicFile:         asteroidf1
+    ComponentType:       asteroid
+    Groups:              debug
+}
+asteroidf2 {
+    UID:         216
+    GraphicFile:         asteroidf2
+    ComponentType:       asteroid
+    AssociatedComponent: -1
+    Groups:              debug
+}
+asteroidf3 {
+    UID:         217
+    GraphicFile:         asteroidf3
+    ComponentType:       asteroid
+    AssociatedComponent: -2
+    Groups:              debug
+}
+asteroidf4 {
+    UID:         218
+    GraphicFile:         asteroidf4
+    ComponentType:       asteroid
+    AssociatedComponent: -3
+    Groups:              debug
+}
+asteroidf5 {
+    UID:         219
+    GraphicFile:         asteroidf5
+    ComponentType:       asteroid
+    AssociatedComponent: -4
+    Groups:              debug
+}
+fire1 {
+    UID:         160
+    RedLight:    40
+    GraphicFile:         fire1
+    ComponentType:       debug
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+fire2 {
+    UID:         161
+    RedLight:    40
+    GraphicFile:         fire2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+fire3 {
+    UID:         162
+    RedLight:    40
+    GraphicFile:         fire3
+    ComponentType:       animation
+    AssociatedComponent: -2
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+fire4 {
+    UID:         163
+    RedLight:    40
+    GraphicFile:         fire4
+    ComponentType:       animation
+    AssociatedComponent: -3
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+fire5 {
+    UID:         164
+    RedLight:    40
+    GraphicFile:         fire5
+    ComponentType:       animation
+    AssociatedComponent: -4
+    Animated:            -4
+    AnimationFrames:     17
+    Groups:              debug
+}
+humanhead {
+    UID:         165
+    GraphicFile:         humanhead
+    ComponentType:       debug
+    Groups:              debug
+}
+humanupper {
+    UID:         170
+    GraphicFile:         humanupper
+    ComponentType:       debug
+    Groups:              debug
+}
+humanlower {
+    UID:         175
+    GraphicFile:         humanlower
+    ComponentType:       debug
+    Groups:              debug
+}
+humanuppersuit {
+    UID:         180
+    GraphicFile:         humanuppersuit
+    ComponentType:       debug
+    Groups:              debug
+}
+humanlowersuit {
+    UID:         185
+    GraphicFile:         humanlowersuit
+    ComponentType:       debug
+    Groups:              debug
+}
+helmet {
+    UID:         190
+    GraphicFile:         helmetclosed
+    ComponentType:       debug
+    Groups:              debug
+}
+helmetopen {
+    UID:         191
+    GraphicFile:         helmetopen
+    ComponentType:       debug
+    Groups:              debug
+}
+helmetcombat {
+    UID:         192
+    GraphicFile:         helmetcombat
+    ComponentType:       debug
+    Groups:              debug
+}
+dirksonhatclosed {
+    UID:         193
+    GraphicFile:         dirksonhatclosed
+    ComponentType:       debug
+    Groups:              debug
+}
+dirksonhatopen {
+    UID:         194
+    GraphicFile:         dirksonhat
+    ComponentType:       debug
+    Groups:              debug
+}
+heatpump {
+    UID:         230
+    GraphicFile:         heatpump
+    ComponentType:       heat
+    Groups:              Other
+}
+doorpanel {
+    UID:         240
+    GraphicFile:         doorpanel
+    ComponentType:       door
+    Groups:              Doors
+}
+clearpane {
+    UID:         250
+    GraphicFile:         clearpane
+    ComponentType:       plating
+    Groups:              Plating
+}
+clearpaneslope1 {
+    UID:         251
+    GraphicFile:         clearpaneslope1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+clearthincorn1 {
+    UID:         252
+    GraphicFile:         clearthincorn1
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+clearpaneslope3 {
+    UID:         253
+    GraphicFile:         clearpaneslope3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+clearpaneslope4 {
+    UID:         254
+    GraphicFile:         clearpaneslope4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+clearthincorn1 {
+    UID:         255
+    GraphicFile:         clearthincorn1
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+clearthincorn2 {
+    UID:         256
+    GraphicFile:         clearthincorn2
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+clearthincorn3 {
+    UID:         257
+    GraphicFile:         clearthincorn3
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+clearthincorn4 {
+    UID:         258
+    GraphicFile:         clearthincorn4
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+clearblock {
+    UID:         260
+    GraphicFile:         clearblock
+    ComponentType:       plating
+    Groups:              Plating
+}
+clearblockslope1 {
+    UID:         261
+    GraphicFile:         clearblockslope1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+clearcorn1 {
+    UID:         262
+    GraphicFile:         clearcorn1
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+clearblockslope3 {
+    UID:         263
+    GraphicFile:         clearblockslope3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+clearblockslope4 {
+    UID:         264
+    GraphicFile:         clearblockslope4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+clearcorn1 {
+    UID:         265
+    GraphicFile:         clearcorn1
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+clearcorn2 {
+    UID:         266
+    GraphicFile:         clearcorn2
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+clearcorn3 {
+    UID:         267
+    GraphicFile:         clearcorn3
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+clearcorn4 {
+    UID:         268
+    GraphicFile:         clearcorn4
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+clearthinpane {
+    UID:         270
+    GraphicFile:         clearthinpane
+    ComponentType:       plating
+    Groups:              Plating
+}
+foundryoff {
+    UID:         400
+    GraphicFile:         foundryoff
+    ComponentType:       build
+    Groups:              Construction
+}
+foundryon {
+    UID:         401
+    GraphicFile:         foundryon
+    ComponentType:       build
+    AssociatedComponent: -1
+    Groups:              Construction
+}
+fact1 {
+    UID:         420
+    GraphicFile:         fact1
+    ComponentType:       build
+    Groups:              Construction
+}
+fact2 {
+    UID:         421
+    GraphicFile:         fact2
+    ComponentType:       build
+    AssociatedComponent: -1
+    Groups:              Construction
+}
+fact3 {
+    UID:         422
+    GraphicFile:         fact3
+    ComponentType:       build
+    AssociatedComponent: -2
+    Groups:              Construction
+}
+fact4 {
+    UID:         423
+    GraphicFile:         fact4
+    ComponentType:       build
+    AssociatedComponent: -3
+    Groups:              Construction
+}
+hold {
+    UID:         450
+    GraphicFile:         closedhold
+    ComponentType:       hold
+    Groups:              Storage
+}
+holdopen {
+    UID:         452
+    GraphicFile:         hold
+    ComponentType:       hold
+    AssociatedComponent: -1
+    Groups:              Storage
+}
+connectorclosed {
+    UID:         460
+    GraphicFile:         connectorclosed
+    ComponentType:       connect
+    Groups:              Engineering
+}
+connectoropen {
+    UID:         461
+    GraphicFile:         connectoropen
+    ComponentType:       connect
+    AssociatedComponent: -1
+    Groups:              Engineering
+}
+explosivebolt {
+    UID:         470
+    GraphicFile:         explosivebolt
+    ComponentType:       connect
+    Groups:              Engineering
+}
+cornerblock1 {
+    UID:         510
+    GraphicFile:         cornerblock1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+ccslope1 {
+    UID:         511
+    GraphicFile:         ccslope1
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+cornerblock3 {
+    UID:         512
+    GraphicFile:         cornerblock3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+cornerblock4 {
+    UID:         513
+    GraphicFile:         cornerblock4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+ccslope1 {
+    UID:         514
+    GraphicFile:         ccslope1
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+ccslope2 {
+    UID:         515
+    GraphicFile:         ccslope2
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+ccslope3 {
+    UID:         516
+    GraphicFile:         ccslope3
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+ccslope4 {
+    UID:         517
+    GraphicFile:         ccslope4
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+cornerslopeinverse1 {
+    UID:         518
+    GraphicFile:         cornerslopeinverse
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+cornerslopeinverse2 {
+    UID:         519
+    GraphicFile:         cornerslopeinverse2
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+cornerbumpblock1 {
+    UID:         520
+    GraphicFile:         cornerbumpblock1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+ccbump1 {
+    UID:         521
+    GraphicFile:         ccbump1
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+cornerbumpblock3 {
+    UID:         522
+    GraphicFile:         cornerbumpblock3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+cornerbumpblock4 {
+    UID:         523
+    GraphicFile:         cornerbumpblock4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+ccbump1 {
+    UID:         524
+    GraphicFile:         ccbump1
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+ccbump2 {
+    UID:         526
+    GraphicFile:         ccbump2
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+ccbump3 {
+    UID:         526
+    GraphicFile:         ccbump3
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+ccbump4 {
+    UID:         527
+    GraphicFile:         ccbump4
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+cornerbumpinverse1 {
+    UID:         528
+    GraphicFile:         cornerbumpinverse
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+cornerbumpinverse2 {
+    UID:         529
+    GraphicFile:         cornerbumpinverse2
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+cornercurveblock1 {
+    UID:         530
+    GraphicFile:         cornercurveblock1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+cccurve1 {
+    UID:         531
+    GraphicFile:         cccurve1
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+cornercurveblock3 {
+    UID:         532
+    GraphicFile:         cornercurveblock3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+cornercurveblock4 {
+    UID:         533
+    GraphicFile:         cornercurveblock4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+cccurve1 {
+    UID:         534
+    GraphicFile:         cccurve1
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+cccurve2 {
+    UID:         535
+    GraphicFile:         cccurve2
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+cccurve3 {
+    UID:         536
+    GraphicFile:         cccurve3
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+cccurve4 {
+    UID:         537
+    GraphicFile:         cccurve4
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+cornercurveinverse1 {
+    UID:         538
+    GraphicFile:         cornercurveinverse
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+cornercurveinverse2 {
+    UID:         539
+    GraphicFile:         cornercurveinverse
+    ComponentType:       platingcor
+    AssociatedComponent: 0
+    Groups:              Plating
+}
+thinblock {
+    UID:         550
+    GraphicFile:         thinblock
+    ComponentType:       plating
+    Groups:              Plating
+}
+thinblockstrut {
+    UID:         551
+    GraphicFile:         thinblockstrut
+    ComponentType:       plating
+    Groups:              Plating
+}
+thinslope1 {
+    UID:         560
+    GraphicFile:         thinslope1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+ccslope1thin {
+    UID:         561
+    GraphicFile:         ccslope1thin
+    ComponentType:       platingcor
+    AssociatedComponent: -1
+    Groups:              Plating
+}
+thinslope3 {
+    UID:         562
+    GraphicFile:         thinslope3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+thinslope4 {
+    UID:         563
+    GraphicFile:         thinslope4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+ccslope1thin {
+    UID:         564
+    GraphicFile:         ccslope1thin
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+ccslope2thin {
+    UID:         565
+    GraphicFile:         ccslope2thin
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+ccslope3thin {
+    UID:         566
+    GraphicFile:         ccslope3thin
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+ccslope4thin {
+    UID:         567
+    GraphicFile:         ccslope4thin
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+thinbump1 {
+    UID:         570
+    GraphicFile:         thinbump1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+ccbump1thin {
+    UID:         571
+    GraphicFile:         ccbump1thin
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+thinbump3 {
+    UID:         572
+    GraphicFile:         thinbump3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+thinbump4 {
+    UID:         573
+    GraphicFile:         thinbump4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+ccbump1thin {
+    UID:         574
+    GraphicFile:         ccbump1thin
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+ccbump2thin {
+    UID:         575
+    GraphicFile:         ccbump2thin
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+ccbump3thin {
+    UID:         576
+    GraphicFile:         ccbump3thin
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+ccbump4thin {
+    UID:         577
+    GraphicFile:         ccbump4thin
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+thincurve1 {
+    UID:         580
+    GraphicFile:         thincurve1
+    ComponentType:       platingedg
+    Groups:              Plating
+}
+cccurve1thin {
+    UID:         581
+    GraphicFile:         cccurve1thin
+    ComponentType:       platingcor
+    Groups:              Plating
+}
+thincurve3 {
+    UID:         582
+    GraphicFile:         thincurve3
+    ComponentType:       platingedg
+    AssociatedComponent: -2
+    Groups:              Plating
+}
+thincurve4 {
+    UID:         583
+    GraphicFile:         thincurve4
+    ComponentType:       platingedg
+    AssociatedComponent: -3
+    Groups:              Plating
+}
+cccurve1thin {
+    UID:         584
+    GraphicFile:         cccurve1thin
+    ComponentType:       platingcor
+    AssociatedComponent: -4
+    Groups:              Plating
+}
+cccurve2thin {
+    UID:         585
+    GraphicFile:         cccurve2thin
+    ComponentType:       platingcor
+    AssociatedComponent: -5
+    Groups:              Plating
+}
+cccurve3thin {
+    UID:         586
+    GraphicFile:         cccurve3thin
+    ComponentType:       platingcor
+    AssociatedComponent: -6
+    Groups:              Plating
+}
+cccurve4thin {
+    UID:         587
+    GraphicFile:         cccurve4thin
+    ComponentType:       platingcor
+    AssociatedComponent: -7
+    Groups:              Plating
+}
+medblock {
+    UID:         600
+    GraphicFile:         medblock
+    ComponentType:       plating
+    Groups:              Plating
+}
+medblockstrut {
+    UID:         601
+    GraphicFile:         medblockstrut
+    ComponentType:       plating
+    AssociatedComponent: -1
+    Groups:              Plating
+}
+scaffold {
+    UID:         700
+    GraphicFile:         scaffold
+    ComponentType:       plating
+    Groups:              Plating
+}
+smallradiator {
+    UID:         701
+    GraphicFile:         smallradiator
+    ComponentType:       plating
+    Groups:              Other
+}
+smallpowercell {
+    UID:         703
+    GraphicFile:         smallpowercell
+    ComponentType:       battery
+    Groups:              Power
+}
+melted1 {
+    UID:         800
+    GraphicFile:         melted1
+    ComponentType:       debug
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+melted2 {
+    UID:         801
+    GraphicFile:         melted2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+melted3 {
+    UID:         802
+    GraphicFile:         melted3
+    ComponentType:       animation
+    AssociatedComponent: -2
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+melted4 {
+    UID:         803
+    GraphicFile:         melted4
+    ComponentType:       animation
+    AssociatedComponent: -3
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+melted5 {
+    UID:         804
+    GraphicFile:         melted5
+    ComponentType:       animation
+    AssociatedComponent: -4
+    Animated:            -4
+    AnimationFrames:     17
+    Groups:              debug
+}
+teleport1 {
+    UID:         850
+    GraphicFile:         teleport1
+    ComponentType:       debug
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+teleport2 {
+    UID:         851
+    GraphicFile:         teleport2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              debug
+}
+teleport3 {
+    UID:         852
+    GraphicFile:         teleport3
+    ComponentType:       animation
+    AssociatedComponent: -2
+    Animated:            -2
+    AnimationFrames:     17
+    Groups:              debug
+}
+solidifiedblock {
+    UID:         900
+    GraphicFile:         solidifiedblock
+    ComponentType:       debug
+    Groups:              debug
+}
+mineinactive {
+    UID:         1100
+    GraphicFile:         mineinactive
+    ComponentType:       mine
+    Groups:              Other
+}
+minearmed {
+    UID:         1101
+    GraphicFile:         minearmed
+    ComponentType:       mine
+    AssociatedComponent: -1
+    Animated:            1
+    AnimationFrames:     17
+    Groups:              Other
+}
+minearmed2 {
+    UID:         1102
+    GraphicFile:         minearmed2
+    ComponentType:       animation
+    AssociatedComponent: -1
+    Animated:            -1
+    AnimationFrames:     17
+    Groups:              Other
+}
+breacher {
+    UID:         1120
+    GraphicFile:         breacher
+    ComponentType:       breacher
+    Groups:              Other
+}
+grinder {
+    UID:         1130
+    GraphicFile:         grinder
+    ComponentType:       grinder
+    Groups:              Other
+}
+firstaid {
+    UID:         1200
+    GraphicFile:         firstaid
+    ComponentType:       medical
+    Groups:              Other
+}
+firstaidopen {
+    UID:         1201
+    GraphicFile:         firstaidopen
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Other
+}
+firstaidopen {
+    UID:         1202
+    GraphicFile:         firstaidopen
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Other
+}
+firstaidopen {
+    UID:         1203
+    GraphicFile:         firstaidopen
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Other
+}
+firstaidopen {
+    UID:         1204
+    GraphicFile:         firstaidopen
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Other
+}
+firstaidopen {
+    UID:         1205
+    GraphicFile:         firstaidopen
+    ComponentType:       singleanim
+    AssociatedComponent: -1
+    Groups:              Other
+}
+ladder {
+    UID:         1220
+    GraphicFile:         ladder
+    ComponentType:       movement
+    Groups:              Furniture
+	Navigable:	1
+}
+magcannon {
+    UID:         1300
+    BlueLight:   20
+    GraphicFile:         magcannon
+    ComponentType:       mag
+    Groups:              Magnetics
+}
+magrail {
+    UID:         1305
+    BlueLight:   20
+    GraphicFile:         magrail
+    ComponentType:       mag
+    Groups:              Magnetics
+}
+clothedtopmale {
+    UID:         2000
+    GraphicFile:         clothedtopmale
+    ComponentType:       mag
+    Groups:              Magnetics
+}
+clothedlowermale {
+    UID:         2005
+    GraphicFile:         clothedlowermale
+    ComponentType:       mag
+    Groups:              Magnetics
+}
+dirt {
+    UID:         3000
+    GraphicFile:         dirt
+    ComponentType:       dirt
+    Groups:              Plants
+}
+grass {
+    UID:         3050
+    GraphicFile:         grass
+    ComponentType:       plant
+    Groups:              Plants
+	Navigable:	1
+}
+carrottops {
+    UID:         3060
+    GraphicFile:         carrottops
+    ComponentType:       plant
+    Groups:              Plants
+	Navigable:	1
+}
+carrots {
+    UID:         3061
+    GraphicFile:         carrots
+    ComponentType:       plant
+    AssociatedComponent: -1
+    Groups:              Plants
+}
+cowhead {
+    UID:         3110
+    GraphicFile:         cowhead
+    ComponentType:       animal
+    Groups:              Other
+}
+nobubblecow {
+    UID:         3112
+    GraphicFile:         nobubblecow
+    ComponentType:       animal
+    Groups:              Other
+}
+cowbacktop {
+    UID:         3115
+    GraphicFile:         cowbacktop
+    ComponentType:       animal
+    Groups:              Other
+}
+cowfrontbottom {
+    UID:         3120
+    GraphicFile:         cowfrontbottom
+    ComponentType:       animal
+    Groups:              Other
+}
+cowbackbottom {
+    UID:         3125
+    GraphicFile:         cowbackbottom
+    ComponentType:       animal
+    Groups:              Other
+}
+trunk {
+    UID:         3500
+    GraphicFile:         trunk
+    ComponentType:       tree
+    Groups:              Tree
+}
+shipseed {
+    UID:         3501
+    GraphicFile:         shipseed
+    ComponentType:       seed
+    Groups:              Tree
+	Navigable:	1
+}
+shipseedling {
+    UID:         3505
+    GraphicFile:         shipseedling
+    ComponentType:       seedling
+    Groups:              Tree
+}
+dougfirbark {
+    UID:         3510
+    GraphicFile:         dougfirbark
+    ComponentType:       bark
+    Groups:              Tree
+}
+dougfirsidecorner {
+    UID:         3511
+    GraphicFile:         dougfirsidecorner
+    ComponentType:       bark
+    AssociatedComponent: -1
+    Groups:              Tree
+}
+dougfirtopcorner {
+    UID:         3512
+    GraphicFile:         dougfirtopcorner
+    ComponentType:       bark
+    AssociatedComponent: -2
+    Groups:              Tree
+}
+birchbark {
+    UID:         3520
+    GraphicFile:         birchbark
+    ComponentType:       bark
+    Groups:              Tree
+}
+birchbarksidecorner {
+    UID:         3521
+    GraphicFile:         birchbarksidecorner
+    ComponentType:       bark
+    AssociatedComponent: -1
+    Groups:              Tree
+}
+birchbarktopcorner {
+    UID:         3522
+    GraphicFile:         birchbarktopcorner
+    ComponentType:       bark
+    AssociatedComponent: -2
+    Groups:              Tree
+}
+fruitbark {
+    UID:         3530
+    GraphicFile:         fruitbark
+    ComponentType:       bark
+    Groups:              Tree
+}
+fruitbarksidecorner {
+    UID:         3531
+    GraphicFile:         fruitbarksidecorner
+    ComponentType:       bark
+    AssociatedComponent: -1
+    Groups:              Tree
+}
+fruitbarktopcorner {
+    UID:         3532
+    GraphicFile:         fruitbarktopcorner
+    ComponentType:       bark
+    AssociatedComponent: -2
+    Groups:              Tree
+}
+leaves1 {
+    UID:         3540
+    GraphicFile:         leaves1
+    ComponentType:       leaves
+    Groups:              Tree
+}
+leaves2 {
+    UID:         3541
+    GraphicFile:         leaves2
+    ComponentType:       leaves
+    AssociatedComponent: -1
+    Groups:              Tree
+}
+leaves3 {
+    UID:         3542
+    GraphicFile:         leaves3
+    ComponentType:       leaves
+    AssociatedComponent: -2
+    Groups:              Tree
+}
+leaves4 {
+    UID:         3543
+    GraphicFile:         leaves4
+    ComponentType:       leaves
+    AssociatedComponent: -3
+    Groups:              Tree
+}
+leaves5 {
+    UID:         3544
+    GraphicFile:         leaves5
+    ComponentType:       leaves
+    AssociatedComponent: -4
+    Groups:              Tree
+}
+dougfirbud {
+    UID:         3550
+    GraphicFile:         dougfirbud
+    ComponentType:       bud
+    Groups:              Tree
+}
+birchbud {
+    UID:         3552
+    GraphicFile:         birchbud
+    ComponentType:       bud
+    Groups:              Tree
+}
+fruitbud {
+    UID:         3554
+    GraphicFile:         fruitbud
+    ComponentType:       bud
+    Groups:              Tree
+}
+InventorySelection {
+    UID:		3700
+    GraphicFile:         reticle3
+    ComponentType:       debug
+    AssociatedComponent: 0
+    Groups:              debug
+}
+SmallAirtank {
+    UID:		3800
+    GraphicFile:         smallairtank
+    AssociatedComponent: 0
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+MediumAirtank {
+    UID:		3801
+    GraphicFile:         mediumairtank
+    AssociatedComponent: 0
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+MiniAirtank {
+    UID:		3803
+    GraphicFile:         miniairtank
+    AssociatedComponent: 0
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+SecuredAirtank {
+    UID:		3804
+    GraphicFile:         securedairtank
+    AssociatedComponent: 0
+    ComponentType:       lifesup
+    Groups:              LifeSupport
+}
+ShopTerminal {
+    UID:         3810
+    GraphicFile:         termcash
+    ComponentType:       terminal
+    Groups:              Terminals
+}
+ResearchStation {
+    UID:         3820
+    GraphicFile:         researchstation
+    ComponentType:       morale
+    Groups:              Furniture
+}
+Counter {
+    UID:         3825
+    GraphicFile:         counter
+    ComponentType:       morale
+    Groups:              Furniture
+}
+ThrusterPod {
+    UID:         3830
+    GraphicFile:         thrusterpodfull
+    ComponentType:       rocket
+    Groups:              Propulsion
+	Navigable:	1
+}
+ComputerInterfaceWall1 {
+    UID:         3840
+    GraphicFile:         computerinterfacewall1
+    ComponentType:       morale
+    Groups:              Furniture
+}
+ComputerInterfaceFloor1 {
+    UID:         3845
+    GraphicFile:         computerinterfacefloor1
+    ComponentType:       morale
+    Groups:              Furniture
+}
+HazardBar {
+    UID:         3850
+    GraphicFile:         hazardbar
+    ComponentType:       morale
+    Groups:              Furniture
+}
+HazardBarDoorClosed {
+    UID:         3851
+    GraphicFile:         hazardbardoorclosed
+    ComponentType:       morale
+    Groups:              Furniture
+}
+HazardBarDoorOpen {
+    UID:         3852
+    GraphicFile:         hazardbardooropen
+    AssociatedComponent: -1
+    ComponentType:       morale
+    Groups:              Furniture
+	Navigable:	1
+}
+ShipOrientation {
+    UID:         3860
+    GraphicFile:         shiporientationcoref0
+    Animated:            1
+    ComponentType:       orientation
+    Groups:              Terminals|Common
+}
+ShipOrientationframe2 {
+    UID:         3861
+    GraphicFile:         shiporientationcoref1
+    Animated:            1
+    AssociatedComponent: -1
+    ComponentType:       orientation
+    Groups:              Terminals|Common
+}
+LetterA {
+    UID:         2100
+    GraphicFile:         letter/a
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterB {
+    UID:         2101
+    GraphicFile:         letter/b
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterC {
+    UID:         2102
+    GraphicFile:         letter/c
+    ComponentType:       letter
+    Groups:              Letters
+}
+Comma {
+    UID:         2103
+    GraphicFile:         letter/comma
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterD {
+    UID:         2104
+    GraphicFile:         letter/d
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterE {
+    UID:         2105
+    GraphicFile:         letter/e
+    ComponentType:       letter
+    Groups:              Letters
+}
+Exclamation {
+    UID:         2106
+    GraphicFile:         letter/exclamation
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterF {
+    UID:         2107
+    GraphicFile:         letter/f
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterG {
+    UID:         2108
+    GraphicFile:         letter/g
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterH {
+    UID:         2109
+    GraphicFile:         letter/h
+    ComponentType:       letter
+    Groups:              Letters
+}
+Hyphen {
+    UID:         2110
+    GraphicFile:         letter/hyphen
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterI {
+    UID:         2111
+    GraphicFile:         letter/i
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterJ {
+    UID:         2112
+    GraphicFile:         letter/j
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterK {
+    UID:         2113
+    GraphicFile:         letter/k
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterL{
+    UID:         2114
+    GraphicFile:         letter/l
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterM {
+    UID:         2115
+    GraphicFile:         letter/m
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterN {
+    UID:         2116
+    GraphicFile:         letter/n
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterO {
+    UID:         2117
+    GraphicFile:         letter/o
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterP {
+    UID:         2118
+    GraphicFile:         letter/p
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterPeriod {
+    UID:         2119
+    GraphicFile:         letter/period
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterQ {
+    UID:         2120
+    GraphicFile:         letter/q
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterR {
+    UID:         2121
+    GraphicFile:         letter/r
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterS {
+    UID:         2122
+    GraphicFile:         letter/s
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterT {
+    UID:         2123
+    GraphicFile:         letter/t
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterU {
+    UID:         2124
+    GraphicFile:         letter/u
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterV {
+    UID:         2125
+    GraphicFile:         letter/v
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterW {
+    UID:         2126
+    GraphicFile:         letter/w
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterX {
+    UID:         2127
+    GraphicFile:         letter/x
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterY {
+    UID:         2128
+    GraphicFile:         letter/y
+    ComponentType:       letter
+    Groups:              Letters
+}
+LetterZ{
+    UID:         2129
+    GraphicFile:         letter/z
+    ComponentType:       letter
+    Groups:              Letters
+}
+teleport1 {
+    UID:         9999
+    GraphicFile:         teleport1
+    ComponentType:       debug
+    Groups:              debug
+}

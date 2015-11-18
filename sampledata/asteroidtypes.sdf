@@ -1,0 +1,138 @@
+# Group
+#	C - 75%
+#	S - 17%
+#	X - 5%
+#	O - 3%
+#
+# Chance is a percentage. 0.0 is 0%, 1.0 is 100%
+#	Chance is relative to group chance, above
+#		For example, 0.01 on a C-group asteroid will occur 1% of the time among C-group asteroids
+#	If chance is omitted, it will default to 0%, disabling it.
+#	I'm pretty sure you could add multiple of these to one object without issue, and they'll just be added up.
+#		But don't do that, because that's stupid. Just write what you mean.
+#			But you could.
+#				But don't.
+# 
+# Layers
+#	Layer are only valid in the top level
+#	They specify different groups of materials that may be present in the layer
+#	Distance is a percentage. 0.0 is 0%, 1.0 is 100%
+#		Distance controls the outer boundry of a layer, measured from the center
+#		LayerLowerBoundry = SumOfAllLowerBoundaryDistances();
+#		LayerUpperBoundry = SumOfAllLowerBoundaryDistances() + CurrentLayerDistance;
+#		If distance is unspecified, 1.0 will be assumed
+#		If your distances don't specify a 1.0 layer, a 1.0 chrondrite layer will be generated.
+#
+# Materials
+#	Materials are valid inside layers AND inside other materials
+#	ID is the UID of the material
+#	Chance is a percentage. 0.0 is 0%, 1.0 is 100%
+#		If a material is in another material, its chances will be relative to the parent material
+#		If chances don't add up to 1.0 inside another material, the remainder will be the parent material
+# 		If chances don't add up to 1.0 in a layer, the remainder will be chondrite
+#	Density may be 'High', 'Med', or 'Low'
+#		Density controls how many non-material voxels (Chondrite) are present
+#		Low density is mostly chondrite, medium is a mix, and high is 100% material
+#		Density is somewhat meaningless for actual chrondrite.
+#		If left unspecified, 'Low' will be the default
+#
+
+
+BType {
+	#Carbonaceous asteroid, of the C group
+	#Wiki says they are composed of "anhydrous silicates, hydrated clay minerals, organic polymers, magnetite, and sulfides"
+	Group:	C
+	Chance: 0.05
+	Layer {		#Undifferentiated asteroid - Single layer
+		#Silicon
+		Material {
+			ID:			600
+			Density:	Low
+			Chance:		0.15
+		}
+		#Kaolinite
+		Material {
+			ID:			400
+			Density:	Low
+			Chance:		0.04
+		}
+		#Sulfur
+		Material {
+			ID:			500
+			Density:	Low
+			Chance:		0.06
+		}
+		#Iron (Maybe should be magnetite)
+		Material {
+			ID:			20
+			Density:	Low
+			Chance:		0.10
+		}
+	} #End single layer
+}
+
+#Example type. Shows off material nesting, filling up layers with chondrite, and adding extra layers
+#QQQType {
+#	Group:	C
+#	Chance:	0.05
+#	Layer {
+#		Distance:	0.50
+#		Material { 		#Silicon
+#			ID:			600
+#			Density:	Medium
+#			Chance: 	0.15
+#			Material { 		#Kaolinite
+#				ID:			400
+#				Density:	Low
+#				Chance: 	0.01
+#			}
+#		}
+#	}
+#	Layer {
+#		Distance:	0.90
+#		Material { 		#Silicon
+#			ID:			600
+#			Density:	High
+#			Chance: 	0.15
+#		}
+#	}
+#}
+
+# Since they're so common, we'll differentiate the c-type asteroids according to meteorite type:
+# https://en.wikipedia.org/wiki/Carbonaceous_chondrite#Composition_and_classification
+# Leaving out CR, CK, and CO for not enough info
+
+#CLType {
+#CVType {
+#CMType {
+#CHType {
+
+#
+# SGroup
+#
+
+#SType {
+#AType {
+#QType {
+#RType {
+#KType {
+#LType {
+#LDType {
+
+#
+# X Group
+#
+
+#XType {
+#XEType {
+#XCType {
+
+#
+# O (Other) Group
+#
+
+#VType {
+#DType {
+#TType {
+#OType {
+

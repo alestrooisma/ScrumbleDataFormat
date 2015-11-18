@@ -14,12 +14,15 @@
  * Main function to test the SDF-parser
  */
 int main(int argc, char** argv) {
-	SdfNode* root = sdf_parse_file("test.sdf");
+	SdfNode* root = sdf_parse_file("sampledata/components.sdf");
 	if (root != NULL) {
-		printf("parsing succesful!\n\n");
+		printf("parsing successful!\n\n");
 		sdf_draw_tree(stdout, root);
 		sdf_free_tree(root);
+		return (EXIT_SUCCESS);
+	} else {
+		printf("parsing failed...\n");
+		return (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
 }
 
