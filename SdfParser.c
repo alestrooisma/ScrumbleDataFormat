@@ -91,7 +91,7 @@ bool consume(ParserData* data, char ch) {
 int consume_label(ParserData* data, char** label) {
 	int start = data->column;
 	*label = &(data->line[start]);
-	while (!isrestricted(data->line[data->column])) {
+	while (data->column < data->linelength && !isrestricted(data->line[data->column])) {
 		data->column++;
 	}
 	int length = data->column - start;
@@ -108,7 +108,7 @@ bool next_line(ParserData* data) {
 		data->linenumber++;
 		data->column = 0;
 		consume_whitespace(data);
-		if (data->line[data->column] == '#' || data->column >= data->linelength) {
+		if (data->column >= data->linelength || data->line[data->column] == '#') {
 			next_line(data);
 		}
 		return true;
@@ -120,8 +120,6 @@ SdfNode* parse_item(ParserData* data) {
 	next_line(data);
 	return NULL;
 }
-
-void parse_children(ParserData* data, SdfNode* parent);
 
 SdfNode* parse_entry(ParserData* data) {
 	
@@ -144,10 +142,17 @@ SdfNode* parse_entry(ParserData* data) {
 		return NULL;
 	}
 	
-	// Parse the contents of the element, until we find the closing bracket.
-	while (consume(data, '}') == false) {
-		next_line(data);
-//		parse_entry(data);
+	// Parse children until the closing bracket is found.
+	while (!consume(data, '}')) {
+		SdfNode* child = parse_entry(data);
+		if (child != NULL) {
+			add_child(element, child);
+		} else {	
+			// Syntax error in contents
+			// TODO set error
+			sdf_free_tree(element);
+			return NULL;
+		}
 	}
 
 	// And we need a final newline, except when we are at the end of the file.
@@ -161,16 +166,14 @@ SdfNode* parse_entry(ParserData* data) {
 	return element;
 }
 
-void parse_children(ParserData* data, SdfNode* parent) {
-	SdfNode* child;
-	while ((child = parse_entry(data)) != NULL) {
-		add_child(parent, child);
-	}
-}
-
 SdfNode* parse_document(ParserData* data) {
 	SdfNode* root = new_valued_node(data->filename, strlen(data->filename));
-	parse_children(data, root);
+	
+	// Parse children
+	SdfNode* child;
+	while ((child = parse_entry(data)) != NULL) {
+		add_child(root, child);
+	}
 	
 	// If end of file has been reached, parsing was successful.
 	// If not at end-of-file, this means the last call to parse_element 
