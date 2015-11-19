@@ -14,7 +14,7 @@
  * Main function to test the SDF-parser
  */
 int main(int argc, char** argv) {
-	SdfNode* root = sdf_parse_file("sampledata/test.sdf");
+	SdfNode* root = sdf_parse_file("sampledata/asteroidtypes.sdf");
 	if (root != NULL) {
 		printf("parsing successful!\n\n");
 		sdf_draw_tree(stdout, root);

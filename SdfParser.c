@@ -141,7 +141,7 @@ bool next_line(ParserData* data) {
 SdfNode* parse_entry(ParserData* data) {
 
 	// First try to parse a label.
-	char* label = 0;
+	char* label;
 	int length = consume_label(data, &label);
 	if (length == 0) {
 		// We did not find a label!
@@ -151,10 +151,12 @@ SdfNode* parse_entry(ParserData* data) {
 	// Create the node for this element
 	SdfNode* element = new_valued_node(label, length);
 
-	// We now need a { followed by a new-line.
+	// Now try to get a { or :
 	if (consume(data, '{')) {
+		// This entry is a struct-valued entry
+		
+		// End the current line
 		if (!next_line(data)) {
-			// Expected new line!
 			sdf_free_tree(element);
 			return error(data, EXPECTED_END_OF_LINE);
 		}
@@ -171,8 +173,18 @@ SdfNode* parse_entry(ParserData* data) {
 			}
 		}
 	} else if (consume(data, ':')) {
-		//TODO
+		// This entry is a single-valued entry
+		
+		// Consume leading white space
+		consume_whitespace(data);
+		
+		// Try to get a simple string
+		char* string;
+		length = consume_label(data, &string);
+		SdfNode* value = new_valued_node(string, length);
+		add_child(element, value);
 	} else {
+		// Failed to get a { or :
 		sdf_free_tree(element);
 		return error(data, EXPECTED_ENTRY);
 	}
