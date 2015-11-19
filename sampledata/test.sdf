@@ -3,6 +3,7 @@
 test1 {
 	test2 {
 	}
+	single1: value1
 }
 test3 {
 	#empty

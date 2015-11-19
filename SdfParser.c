@@ -11,6 +11,10 @@
 
 #define INITIAL_BUFFER_SIZE 256
 
+typedef enum {
+	NO_ERROR, EXPECTED_END_OF_LINE, EXPECTED_LABEL, EXPECTED_ENTRY
+} ErrorType;
+
 typedef struct ParserData {
 	FILE* file;
 	const char* filename;
@@ -19,6 +23,7 @@ typedef struct ParserData {
 	ssize_t linelength;
 	int linenumber;
 	ssize_t column;
+	ErrorType error;
 } ParserData;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -61,8 +66,25 @@ void add_child(SdfNode* parent, SdfNode* newchild) {
 	}
 }
 
-void* error(const char* msg) {
-	printf("%s\n", msg);
+char* errormsg(ErrorType type) {
+	switch (type) {
+		case NO_ERROR:
+			return "";
+		case EXPECTED_END_OF_LINE:
+			return "Expected end of line";
+		case EXPECTED_LABEL:
+			return "Expected label";
+		case EXPECTED_ENTRY:
+			return "Expected : or {";
+	}
+}
+
+void* error(ParserData* data, ErrorType type) {
+	data->error = type;
+
+	printf("Error while parsing %s at line %i: %s.\n", data->filename, data->linenumber, errormsg(data->error));
+	printf("%.*s", data->linelength, data->line);
+	printf("%*s^\n\n", data->column, "");
 	return NULL;
 }
 
@@ -116,80 +138,69 @@ bool next_line(ParserData* data) {
 	return false;
 }
 
-SdfNode* parse_item(ParserData* data) {
-	next_line(data);
-	return NULL;
-}
-
 SdfNode* parse_entry(ParserData* data) {
-	
+
 	// First try to parse a label.
 	char* label = 0;
 	int length = consume_label(data, &label);
 	if (length == 0) {
 		// We did not find a label!
-		// TODO set error
-		return NULL;
+		return error(data, EXPECTED_LABEL);
 	}
-	
+
 	// Create the node for this element
 	SdfNode* element = new_valued_node(label, length);
-	
+
 	// We now need a { followed by a new-line.
-	if (!(consume(data, '{') && next_line(data))) {
-		// TODO set error
-		sdf_free_tree(element);
-		return NULL;
-	}
-	
-	// Parse children until the closing bracket is found.
-	while (!consume(data, '}')) {
-		SdfNode* child = parse_entry(data);
-		if (child != NULL) {
-			add_child(element, child);
-		} else {	
-			// Syntax error in contents
-			// TODO set error
+	if (consume(data, '{')) {
+		if (!next_line(data)) {
+			// Expected new line!
 			sdf_free_tree(element);
-			return NULL;
+			return error(data, EXPECTED_END_OF_LINE);
 		}
+
+		// Parse children until the closing bracket is found.
+		while (!consume(data, '}')) {
+			SdfNode* child = parse_entry(data);
+			if (child != NULL) {
+				add_child(element, child);
+			} else {
+				// Syntax error in contents
+				sdf_free_tree(element);
+				return NULL;
+			}
+		}
+	} else if (consume(data, ':')) {
+		//TODO
+	} else {
+		sdf_free_tree(element);
+		return error(data, EXPECTED_ENTRY);
 	}
 
 	// And we need a final newline, except when we are at the end of the file.
 	if (!next_line(data) && !feof(data->file)) {
 		// Encountered something else than a newline or feof
-		// TODO set error
 		sdf_free_tree(element);
-		return NULL;
+		return error(data, EXPECTED_END_OF_LINE);
 	}
-	
+
 	return element;
 }
 
 SdfNode* parse_document(ParserData* data) {
 	SdfNode* root = new_valued_node(data->filename, strlen(data->filename));
-	
-	// Parse children
-	SdfNode* child;
-	while ((child = parse_entry(data)) != NULL) {
-		add_child(root, child);
-	}
-	
-	// If end of file has been reached, parsing was successful.
-	// If not at end-of-file, this means the last call to parse_element 
-	// returned NULL because it encountered a syntax error!
-	if (feof(data->file)) {
-		// Success: return the tree.
-		return root;
-	} else {
-		// Syntax error! Display it, clean up, and return null.
-		
-		// TODO - display error
-		
-		sdf_free_tree(root);
-		return NULL;
-	}
 
+	// Parse children
+	while (!feof(data->file)) {
+		SdfNode* child = parse_entry(data);
+		if (child != NULL) {
+			add_child(root, child);
+		} else {
+			// Syntax error in contents
+			sdf_free_tree(root);
+			return NULL;
+		}
+	}
 	return root;
 }
 
@@ -225,7 +236,8 @@ SdfNode* sdf_parse_file(const char* filename) {
 
 	// Check to see if we actually opened the file OK
 	if (file == NULL) {
-		return error("Unable to open Components file");
+		printf("Unable to open Components file");
+		return NULL;
 	}
 
 	// Prepare the parser status object
@@ -235,6 +247,7 @@ SdfNode* sdf_parse_file(const char* filename) {
 	data.buffer_size = INITIAL_BUFFER_SIZE * sizeof (char);
 	data.line = malloc(data.buffer_size);
 	data.linenumber = 0;
+	data.error = NO_ERROR;
 	next_line(&data);
 
 	// Build the AST
@@ -245,9 +258,9 @@ SdfNode* sdf_parse_file(const char* filename) {
 	free(data.line);
 
 	// Return
-	if (root == NULL) {
-		return error("Parsing failed");
-	}
+	//	if (root == NULL) {
+	//		return error("Parsing failed");
+	//	}
 	return root;
 }
 
