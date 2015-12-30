@@ -63,14 +63,15 @@ void processDirectory(char* path, char* prefix) {
  */
 int main(int argc, char** argv) {
 	processDirectory("sampledata/correct/", "correct");
-	//	SdfNode* root = sdf_parse_file("sampledata/asteroidtypes.sdf");
-	//	if (root != NULL) {
-	//		printf("parsing successful!\n\n");
-	//		sdf_draw_tree(stdout, root);
-	//		sdf_free_tree(root);
-	//		return (EXIT_SUCCESS);
-	//	} else {
-	//		printf("parsing failed...\n");
-	//		return (EXIT_FAILURE);
-	//	}
+//	processDirectory("sampledata/", "test");
+//	SdfNode* root = sdf_parse_file("sampledata/correct/correct06_no_trailing_newline.sdf");
+//	if (root != NULL) {
+//		printf("parsing successful!\n\n");
+//		sdf_draw_tree(stdout, root);
+//		sdf_free_tree(root);
+//		return (EXIT_SUCCESS);
+//	} else {
+//		printf("parsing failed...\n");
+//		return (EXIT_FAILURE);
+//	}
 }

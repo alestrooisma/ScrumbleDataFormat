@@ -9,7 +9,7 @@
 // Type declarations                                                          //
 ////////////////////////////////////////////////////////////////////////////////
 
-#define INITIAL_BUFFER_SIZE 256
+#define INITIAL_BUFFER_SIZE 5
 
 typedef enum {
 	NO_ERROR, EXPECTED_END_OF_LINE, EXPECTED_LABEL, EXPECTED_ENTRY
@@ -20,10 +20,10 @@ typedef struct ParserData {
 	const char* filename;
 	size_t buffer_size;
 	char* line;
-	ssize_t linelength;
+	size_t linelength;
 	int linenumber;
-	ssize_t column;
-	ErrorType error;
+	size_t column;
+	bool eof;
 } ParserData;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -80,10 +80,8 @@ char* errormsg(ErrorType type) {
 }
 
 void* error(ParserData* data, ErrorType type) {
-	data->error = type;
-
-	printf("Error while parsing %s at line %i: %s.\n", data->filename, data->linenumber, errormsg(data->error));
-	printf("%.*s", data->linelength, data->line);
+	printf("Error while parsing %s at line %i: %s.\n", data->filename, data->linenumber, errormsg(type));
+	printf("%.*s\n", data->linelength, data->line);
 	printf("%*s^\n\n", data->column, "");
 	return NULL;
 }
@@ -123,10 +121,54 @@ int consume_label(ParserData* data, char** label) {
 	return length;
 }
 
+char last_char(ParserData* data) {
+	return data->line[data->linelength - 1];
+}
+
+void read_line(ParserData* data) {
+	if (fgets(data->line, data->buffer_size, data->file) == NULL) {
+		data->eof = true;
+		return;
+	}
+	data->linelength = strlen(data->line);
+
+	// If the buffer was too small, extend it and keep reading
+	while (data->linelength == data->buffer_size - 1
+			&& last_char(data) != '\n') {
+		printf("Should enlarge buffer (line length was %i, final char was \'%c\')\n", data->linelength, last_char(data));
+		char* old_buffer = data->line;
+		size_t old_buffer_size = data->buffer_size;
+
+		// Create new buffer
+		data->buffer_size = old_buffer_size * 2;
+		data->line = malloc(data->buffer_size * sizeof (char));
+
+		// Fill it with the previously read part of the line
+		strcpy(data->line, old_buffer);
+
+		// Destroy old buffer
+		free(old_buffer);
+
+		// Continue reading
+		fgets(&(data->line[old_buffer_size - 1]),
+				data->buffer_size - (old_buffer_size - 1), data->file);
+		data->linelength = strlen(data->line);
+	}
+	
+	// Remove end-line character
+	if (last_char(data) == '\n') {
+		data->line[data->linelength - 1] = '\0';
+		data->linelength--;
+	}
+	
+	printf("Read line of length %i, with final character %c into buffer with size %i: \"%s\"\n",
+			data->linelength, last_char(data), data->buffer_size, data->line);
+}
+
 bool next_line(ParserData* data) {
 	//TODO error/warning on remaining text!
-	if (!feof(data->file)) {
-		data->linelength = getline(&(data->line), &(data->buffer_size), data->file);
+	read_line(data);
+	if (!data->eof) {
 		data->linenumber++;
 		data->column = 0;
 		consume_whitespace(data);
@@ -154,7 +196,7 @@ SdfNode* parse_entry(ParserData* data) {
 	// Now try to get a { or :
 	if (consume(data, '{')) {
 		// This entry is a struct-valued entry
-		
+
 		// End the current line
 		if (!next_line(data)) {
 			sdf_free_tree(element);
@@ -174,10 +216,10 @@ SdfNode* parse_entry(ParserData* data) {
 		}
 	} else if (consume(data, ':')) {
 		// This entry is a single-valued entry
-		
+
 		// Consume leading white space
 		consume_whitespace(data);
-		
+
 		// Try to get a simple string
 		char* string;
 		length = consume_label(data, &string);
@@ -190,8 +232,8 @@ SdfNode* parse_entry(ParserData* data) {
 	}
 
 	// And we need a final newline, except when we are at the end of the file.
-	if (!next_line(data) && !feof(data->file)) {
-		// Encountered something else than a newline or feof
+	if (!next_line(data) && !data->eof) {
+		// Encountered something else than a newline or EOF
 		sdf_free_tree(element);
 		return error(data, EXPECTED_END_OF_LINE);
 	}
@@ -203,7 +245,7 @@ SdfNode* parse_document(ParserData* data) {
 	SdfNode* root = new_valued_node(data->filename, strlen(data->filename));
 
 	// Parse children
-	while (!feof(data->file)) {
+	while (!data->eof) {
 		SdfNode* child = parse_entry(data);
 		if (child != NULL) {
 			add_child(root, child);
@@ -248,7 +290,7 @@ SdfNode* sdf_parse_file(const char* filename) {
 
 	// Check to see if we actually opened the file OK
 	if (file == NULL) {
-		printf("Unable to open Components file");
+		printf("Unable to open file \"%s\"", filename);
 		return NULL;
 	}
 
@@ -256,10 +298,10 @@ SdfNode* sdf_parse_file(const char* filename) {
 	ParserData data;
 	data.file = file;
 	data.filename = filename;
-	data.buffer_size = INITIAL_BUFFER_SIZE * sizeof (char);
-	data.line = malloc(data.buffer_size);
+	data.buffer_size = INITIAL_BUFFER_SIZE;
+	data.line = malloc(data.buffer_size * sizeof (char));
 	data.linenumber = 0;
-	data.error = NO_ERROR;
+	data.eof = false;
 	next_line(&data);
 
 	// Build the AST
@@ -270,9 +312,6 @@ SdfNode* sdf_parse_file(const char* filename) {
 	free(data.line);
 
 	// Return
-	//	if (root == NULL) {
-	//		return error("Parsing failed");
-	//	}
 	return root;
 }
 

@@ -1,7 +1,7 @@
 objects = main.o SdfParser.o
 
 test: $(objects)
-	cc -o test $(objects)
+	cc -Werror -Wall -Wextra -o test $(objects)
 
 main.o: SdfParser.h
 SdfParser.o: SdfParser.h
