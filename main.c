@@ -21,7 +21,7 @@ void processDirectory(char* path, char* prefix) {
 	for (i = 0; i < MAX; i++) {
 		list[i] = NULL;
 	}
-	
+
 	int prefix_length = strlen(prefix);
 	DIR *dir;
 	struct dirent *entry;
@@ -32,7 +32,7 @@ void processDirectory(char* path, char* prefix) {
 			if (strncmp(fname, prefix, prefix_length) == 0) {
 				int number = atoi(&fname[prefix_length]);
 				if (number < MAX) {
-					list[number] = (char*) malloc(sizeof(char) * (strlen(path) + fname_length + 1));
+					list[number] = (char*) malloc(sizeof (char) * (strlen(path) + fname_length + 1));
 					strcpy(list[number], path);
 					strcat(list[number], fname);
 				}
@@ -43,14 +43,14 @@ void processDirectory(char* path, char* prefix) {
 		/* could not open directory */
 		perror("");
 	}
-	
+
 	for (i = 0; i < MAX; i++) {
 		if (list[i]) {
 			printf("Parsing %s\n", list[i]);
 			SdfNode* root = sdf_parse_file(list[i]);
-			sdf_draw_tree(stdout, root);
-			sdf_free_tree(root);
 			if (root) {
+				sdf_draw_tree(stdout, root);
+				sdf_free_tree(root);
 				printf("Success!\n\n");
 			}
 			free(list[i]);
