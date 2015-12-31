@@ -1,7 +1,9 @@
+CFLAGS = -Werror -Wall -Wextra
+
 objects = main.o SdfParser.o
 
 test: $(objects)
-	cc -Werror -Wall -Wextra -o test $(objects)
+	$(CC) -o test $(objects)
 
 main.o: SdfParser.h
 SdfParser.o: SdfParser.h

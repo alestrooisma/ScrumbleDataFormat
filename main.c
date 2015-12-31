@@ -61,7 +61,7 @@ void processDirectory(char* path, char* prefix) {
 /**
  * Main function to test the SDF-parser
  */
-int main(int argc, char** argv) {
+int main(/**int argc, char** argv*/) {
 	processDirectory("sampledata/correct/", "correct");
 //	processDirectory("sampledata/", "test");
 //	SdfNode* root = sdf_parse_file("sampledata/correct/correct06_no_trailing_newline.sdf");
@@ -74,4 +74,5 @@ int main(int argc, char** argv) {
 //		printf("parsing failed...\n");
 //		return (EXIT_FAILURE);
 //	}
+	return EXIT_SUCCESS;
 }

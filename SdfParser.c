@@ -76,13 +76,15 @@ char* errormsg(ErrorType type) {
 			return "Expected label";
 		case EXPECTED_ENTRY:
 			return "Expected : or {";
+		default:
+			return "Error not specified";
 	}
 }
 
 void* error(ParserData* data, ErrorType type) {
 	printf("Error while parsing %s at line %i: %s.\n", data->filename, data->linenumber, errormsg(type));
-	printf("%.*s\n", data->linelength, data->line);
-	printf("%*s^\n\n", data->column, "");
+	printf("%.*s\n", (int) data->linelength, data->line);
+	printf("%*s^\n\n", (int) data->column, "");
 	return NULL;
 }
 
@@ -135,7 +137,6 @@ void read_line(ParserData* data) {
 	// If the buffer was too small, extend it and keep reading
 	while (data->linelength == data->buffer_size - 1
 			&& last_char(data) != '\n') {
-		printf("Should enlarge buffer (line length was %i, final char was \'%c\')\n", data->linelength, last_char(data));
 		char* old_buffer = data->line;
 		size_t old_buffer_size = data->buffer_size;
 
@@ -160,9 +161,6 @@ void read_line(ParserData* data) {
 		data->line[data->linelength - 1] = '\0';
 		data->linelength--;
 	}
-	
-	printf("Read line of length %i, with final character %c into buffer with size %i: \"%s\"\n",
-			data->linelength, last_char(data), data->buffer_size, data->line);
 }
 
 bool next_line(ParserData* data) {
