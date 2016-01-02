@@ -1,18 +1,16 @@
-label1 {# comment
+label1 {
   label1: value1
 }
-label2 { # comment
+label2 {
   label2 {
-    # comment
   }
-  label3: value3# comment
+  label3: value3
 }
 label3 {
-  label2: value2
+  label2: "value2"
   label3 {
-    # comment
-    label4: value4   # comment
+    label4: value4
   }
 }
 label4: value4
-label5: value5
+label5: "value5\nwith escaped \", \\ and the newline above"

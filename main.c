@@ -64,7 +64,7 @@ void processDirectory(char* path, char* prefix) {
 int main(/**int argc, char** argv*/) {
 	processDirectory("sampledata/correct/", "correct");
 //	processDirectory("sampledata/", "test");
-//	SdfNode* root = sdf_parse_file("sampledata/correct/correct06_no_trailing_newline.sdf");
+//	SdfNode* root = sdf_parse_file("sampledata/test.sdf");
 //	if (root != NULL) {
 //		printf("parsing successful!\n\n");
 //		sdf_draw_tree(stdout, root);

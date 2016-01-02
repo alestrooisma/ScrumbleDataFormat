@@ -9,10 +9,10 @@
 // Type declarations                                                          //
 ////////////////////////////////////////////////////////////////////////////////
 
-#define INITIAL_BUFFER_SIZE 5
+#define INITIAL_BUFFER_SIZE 128
 
 typedef enum {
-	NO_ERROR, EXPECTED_END_OF_LINE, EXPECTED_LABEL, EXPECTED_ENTRY
+	NO_ERROR, EXPECTED_END_OF_LINE, EXPECTED_LABEL, EXPECTED_ENTRY, EXPECTED_QUOTE
 } ErrorType;
 
 typedef struct ParserData {
@@ -76,6 +76,8 @@ char* errormsg(ErrorType type) {
 			return "Expected label";
 		case EXPECTED_ENTRY:
 			return "Expected : or {";
+		case EXPECTED_QUOTE:
+			return "Expected \"";
 		default:
 			return "Error not specified";
 	}
@@ -94,6 +96,10 @@ void* error(ParserData* data, ErrorType type) {
 
 bool isrestricted(char ch) {
 	return ch == '{' || ch == '}' || ch == ':' || ch == '"' || ch == '#';
+}
+
+bool isnewline(char ch) {
+	return ch == '\n' || ch == '\r';
 }
 
 void consume_whitespace(ParserData* data) {
@@ -123,20 +129,95 @@ int consume_label(ParserData* data, char** label) {
 	return length;
 }
 
+SdfNode* consume_quoted_string(ParserData* data) {	
+	char* buffer = malloc(sizeof (char) * data->buffer_size);
+		
+	// Consume opening quote
+	if (!consume(data, '"')) {
+		free(buffer);
+		return error(data, EXPECTED_QUOTE);
+	}
+	
+	int i = 0;
+	while (data->column < data->linelength && data->line[data->column] != '"') {
+		if (data->line[data->column] == '\\') {
+			data->column++;
+			switch (data->line[data->column]) {
+				case '0':
+					buffer[i] = '\0';
+					break;
+				case 'a':
+					buffer[i] = '\a';
+					break;
+				case 'b':
+					buffer[i] = '\b';
+					break;
+				case 'f':
+					buffer[i] = '\f';
+					break;
+				case 'n':
+					buffer[i] = '\n';
+					break;
+				case 'r':
+					buffer[i] = '\r';
+					break;
+				case 't':
+					buffer[i] = '\t';
+					break;
+				case 'v':
+					buffer[i] = '\v';
+					break;
+				case 'd':
+					//TODO decimal UTF-8 input
+					break;
+				case 'o':
+					//TODO octal UTF-8 input
+					break;
+				case 'x':
+					//TODO octal UTF-8 input
+					break;
+				default:
+					buffer[i] = data->line[data->column];
+					break;
+			}
+		} else {
+			buffer[i] = data->line[data->column];
+		}
+		i++;
+		data->column++;
+	}
+	
+	// Consume closing quote
+	if (!consume(data, '"')) {
+		free(buffer);
+		return error(data, EXPECTED_QUOTE);
+	}
+	
+	// Create a node containing the string in the buffer
+	SdfNode* node = new_valued_node(buffer, i);
+	
+	// Clean up and return
+	free(buffer);
+	return node;
+}
+
 char last_char(ParserData* data) {
 	return data->line[data->linelength - 1];
 }
 
 void read_line(ParserData* data) {
+	// Read one line
 	if (fgets(data->line, data->buffer_size, data->file) == NULL) {
 		data->eof = true;
 		return;
 	}
 	data->linelength = strlen(data->line);
 
-	// If the buffer was too small, extend it and keep reading
-	while (data->linelength == data->buffer_size - 1
-			&& last_char(data) != '\n') {
+	// If the buffer was too small, extend it and keep reading.
+	// Note: when the last character in the buffer is the CR of a CRLF-terminated line, 
+	// the parser thinks the line is terminated and the next line parsed is an empty 
+	// LF-terminated line. However, as empty lines are ignored, this is not a problem.
+	while (data->linelength == data->buffer_size - 1 && !isnewline(last_char(data))) {
 		char* old_buffer = data->line;
 		size_t old_buffer_size = data->buffer_size;
 
@@ -156,8 +237,8 @@ void read_line(ParserData* data) {
 		data->linelength = strlen(data->line);
 	}
 	
-	// Remove end-line character
-	if (last_char(data) == '\n') {
+	// Remove end-line character - iterative to catch CRLF and LFCR
+	while (isnewline(last_char(data))) {
 		data->line[data->linelength - 1] = '\0';
 		data->linelength--;
 	}
@@ -218,10 +299,17 @@ SdfNode* parse_entry(ParserData* data) {
 		// Consume leading white space
 		consume_whitespace(data);
 
-		// Try to get a simple string
-		char* string;
-		length = consume_label(data, &string);
-		SdfNode* value = new_valued_node(string, length);
+		// Try to get a simple or quoted string
+		SdfNode* value;
+		if (data->line[data->column] == '"') {
+			// Quoted string
+			value = consume_quoted_string(data);
+		} else {
+			// Simple string
+			char* string;
+			length = consume_label(data, &string);
+			value = new_valued_node(string, length);
+		}
 		add_child(element, value);
 	} else {
 		// Failed to get a { or :
