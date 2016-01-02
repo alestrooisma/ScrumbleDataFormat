@@ -202,7 +202,11 @@ SdfNode* consume_quoted_string(ParserData* data) {
 }
 
 char last_char(ParserData* data) {
-	return data->line[data->linelength - 1];
+	if (data->linelength > 0) {
+		return data->line[data->linelength - 1];
+	} else {
+		return '\0';
+	}
 }
 
 void read_line(ParserData* data) {
